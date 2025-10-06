@@ -92,7 +92,7 @@ class Program
                         cancellationToken: cancellationToken);
                     break;
                 case "/run":
-                    var webAppInfo = new WebAppInfo { Url = "https://github.com/Quaxww/TMK_Quax" };
+                    var webAppInfo = new WebAppInfo { Url = "https://quaxww.github.io/" };
                     var webAppButton = InlineKeyboardButton.WithWebApp("Запустить приложение", webAppInfo);
                     var inlineKeyboard = new InlineKeyboardMarkup(new[] {new[] {webAppButton}});
                     await botClient.SendTextMessageAsync(
@@ -104,17 +104,9 @@ class Program
                 case "/help":
                     await botClient.SendTextMessageAsync(
                         chatId: chatId,
-                        text: "Доступные команды:\n/start - начать работу\n/help - помощь\n/test - тест",
+                        text: "Доступные команды:\n/start - начать работу\n/help - помощь",
                         cancellationToken: cancellationToken);
                     break;
-
-                case "/test":
-                    await botClient.SendTextMessageAsync(
-                        chatId: chatId,
-                        text: "Бот работает корректно! ✅",
-                        cancellationToken: cancellationToken);
-                    break;
-
                 default:
                     await botClient.SendTextMessageAsync(
                         chatId: chatId,
@@ -128,7 +120,7 @@ class Program
             // Ответ на обычное сообщение
             await botClient.SendTextMessageAsync(
                 chatId: chatId,
-                text: $"Вы написали: {messageText}",
+                text: "Пожалуйста, воспользуйтесь командами /start или /help.",
                 cancellationToken: cancellationToken);
         }
     }
